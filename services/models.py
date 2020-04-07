@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50,null=True)
     phone = models.CharField(max_length=10, null=True)
     email = models.CharField(max_length=50, null=True)
     profile_pic = models.ImageField(default="profile1.jpg", null=True, blank=True)
