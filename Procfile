@@ -1,1 +1,1 @@
-web: gunicorn myCRM.wsgi --log-file -
+web: gunicorn myCMP.wsgi --log-file -
