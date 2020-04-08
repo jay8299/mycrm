@@ -30,8 +30,8 @@ def registerPage(request):
 
 
 
-#@login_required(login_url='login')
-#@allowed_users(allowed_roles=['customer'])
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['customer'])
 def userPage(request):
     orders = request.user.customer.order_set.all()
     total_orders = orders.count()
