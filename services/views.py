@@ -30,8 +30,8 @@ def registerPage(request):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['customer'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['customer'])
 def userPage(request):
     orders = request.user.customer.order_set.all()
     total_orders = orders.count()
@@ -72,8 +72,8 @@ def logoutUser(request):
 
 
 
-@login_required(login_url='login')
-@admin_only
+#@login_required(login_url='login')
+#@admin_only
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
@@ -89,8 +89,8 @@ def home(request):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def product(request):
     products = Product.objects.all()
 
