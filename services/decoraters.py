@@ -26,7 +26,7 @@ def allowed_users(allowed_roles=[]):
             if group in allowed_roles:
                 return view_fun(request, *args, **kwargs)
             else:
-                return HttpResponse("You are not Autherised to view this page")
+                return HttpResponse(request,"You are not Autherised to view this page")
         return wrapper_func
     return decorater
 
