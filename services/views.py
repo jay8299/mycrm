@@ -12,7 +12,7 @@ from .decoraters import *
 
 
 
-@unauthenticated_user
+#@unauthenticated_user
 def registerPage(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -46,7 +46,7 @@ def userPage(request):
 
 
 
-@unauthenticated_user
+#@unauthenticated_user
 def loginPage(request):
     if request.method == "POST":
         username = request.POST.get('username')
