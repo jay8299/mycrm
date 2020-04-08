@@ -12,7 +12,7 @@ from .decoraters import *
 
 
 
-@unauthenticated_user
+#@unauthenticated_user
 def registerPage(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -32,8 +32,8 @@ def registerPage(request):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['customer'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['customer'])
 def userPage(request):
     orders = request.user.customer.order_set.all()
     total_orders = orders.count()
@@ -48,7 +48,7 @@ def userPage(request):
 
 
 
-@unauthenticated_user
+#@unauthenticated_user
 def loginPage(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -74,8 +74,8 @@ def logoutUser(request):
 
 
 
-@login_required(login_url='login')
-@admin_only
+#@login_required(login_url='login')
+#@admin_only
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
@@ -91,8 +91,8 @@ def home(request):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def product(request):
     products = Product.objects.all()
 
@@ -101,8 +101,8 @@ def product(request):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
 
@@ -118,8 +118,8 @@ def customer(request, pk):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def create_order(request, pk):
     customer = Customer.objects.get(id=pk)
     form = OrderForm(initial={'customer':customer})
@@ -136,8 +136,8 @@ def create_order(request, pk):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def update_order(request, pk):
     order = Order.objects.get(id=pk)
     form = OrderForm(instance=order)
@@ -153,8 +153,8 @@ def update_order(request, pk):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def delete_order(request, pk):
     order = Order.objects.get(id=pk)
     if request.method == "POST":
@@ -168,8 +168,8 @@ def delete_order(request, pk):
 
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['customer'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['customer'])
 def account_settings(request):
     customer = request.user.customer
     form = CustomerForm(instance=customer)
