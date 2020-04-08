@@ -28,10 +28,10 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
       </li>
+        {% else %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'product' %}">Products</a>
       </li>
-        {% else %}
 
         <li class="nav-item">
         <a class="nav-link" href="{% url 'account' %}">Settings</a>

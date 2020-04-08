@@ -12,7 +12,7 @@ from .decoraters import *
 
 
 
-#@unauthenticated_user
+@unauthenticated_user
 def registerPage(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -46,7 +46,7 @@ def userPage(request):
 
 
 
-#@unauthenticated_user
+@unauthenticated_user
 def loginPage(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -72,8 +72,8 @@ def logoutUser(request):
 
 
 
-#@login_required(login_url='login')
-#@admin_only
+@login_required(login_url='login')
+@admin_only
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
@@ -89,7 +89,7 @@ def home(request):
 
 
 
-#@login_required(login_url='login')
+@login_required(login_url='login')
 #@allowed_users(allowed_roles=['admin'])
 def product(request):
     products = Product.objects.all()
