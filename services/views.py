@@ -19,12 +19,13 @@ def registerPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
+            #print("valid",form)
             username = form.cleaned_data.get('username')
 
             messages.success(request, "Account created succesfully for "+username)
-        return redirect('login')
-
-    context={'form':form}
+            return redirect('login')
+    print(form)
+    context = {'form':form}
     return render(request,'register.html',context)
 
 
@@ -178,3 +179,4 @@ def account_settings(request):
 
     context = {'form': form}
     return render(request, 'account.html', context)
+
