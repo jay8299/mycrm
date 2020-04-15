@@ -12,6 +12,7 @@
           <table class="table table-sm">
               <tr>
                   <th></th>
+                  <th>ID</th>
                   <th>Customer</th>
                   <th>Phone</th>
               </tr>
@@ -19,6 +20,7 @@
                   {% for customer in customers %}
                     <tr>
                         <td><a href="{% url 'customer' customer.id %}" class="btn btn-sm btn-info" >View</a></td>
+                        <td>{{customer.id}}</td>
                         <td>{{customer.name}}</td>
                         <td>{{customer.phone}}</td>
                     </tr>

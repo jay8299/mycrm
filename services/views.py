@@ -35,11 +35,12 @@ def registerPage(request):
 @allowed_users(allowed_roles=['customer'])
 def userPage(request):
     orders = request.user.customer.order_set.all()
+    customer = request.user.customer
     total_orders = orders.count()
     orders_delivered = orders.filter(status='Delivered').count()
     orders_pending = orders.filter(status='Pending').count()
     context = {'orders':orders, 'total_orders':total_orders,
-               'orders_delivered':orders_delivered, 'orders_pending':orders_pending}
+               'orders_delivered':orders_delivered, 'orders_pending':orders_pending, 'customer':customer}
     return render(request,'user.html',context)
 
 
@@ -118,7 +119,7 @@ def customer(request, pk):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@allowed_users(allowed_roles=['admin','customer'])
 def create_order(request, pk):
     customer = Customer.objects.get(id=pk)
     form = OrderForm(initial={'customer':customer})
@@ -130,8 +131,6 @@ def create_order(request, pk):
 
     context = {'form':form, 'customer':customer}
     return render(request, 'order_form.html', context)
-
-
 
 
 
@@ -168,7 +167,7 @@ def delete_order(request, pk):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['customer'])
+@allowed_users(allowed_roles=['customer','admin'])
 def account_settings(request):
     customer = request.user.customer
     form = CustomerForm(instance=customer)

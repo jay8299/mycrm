@@ -3,7 +3,11 @@
 {% block content %}
 
 {% include 'status.html' %}
-
+<div class="card card-body">
+	<div class="btn btn-outline-primary  btn-sm btn-block">
+		<a href="{% url 'create_order' customer.id %}">Place Order</a>
+	</div>
+</div>
 <div class="row">
 	<div class="col-md">
 		<div class="card card-body">
